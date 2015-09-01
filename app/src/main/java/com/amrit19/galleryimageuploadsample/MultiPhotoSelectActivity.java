@@ -110,7 +110,8 @@ public class MultiPhotoSelectActivity extends AppCompatActivity implements View.
                         uploadMultipleFilesUsingVolley(selectedItems, Config.FILE_UPLOAD_URL);
                 if (response != null) {
                     // showing the server response in an alert dialog
-                    showAlert(response);
+                   // String title = "Response from Server: ";
+                   // showAlert(response, title);
 
                     //uncheck all checkboxes after upload
                     uncheckAllCheckBoxes();
@@ -162,7 +163,8 @@ public class MultiPhotoSelectActivity extends AppCompatActivity implements View.
             Log.v(TAG, "Response from server: " + result);
 
             // showing the server response in an alert dialog
-            showAlert(result);
+            String title = "Response from Server: ";
+            showAlert(result, title);
 
             if (progressDialog != null && progressDialog.isShowing()) {
                 progressDialog.dismiss();
@@ -180,10 +182,10 @@ public class MultiPhotoSelectActivity extends AppCompatActivity implements View.
         imageAdapter.updateAdapter();
     }
 
-    private void showAlert(String message) {
+    private void showAlert(String message, String title) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message).setTitle("Response from Server: ")
+        builder.setMessage(message).setTitle(title)
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
